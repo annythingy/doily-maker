@@ -9,7 +9,7 @@ import javax.swing.*;
 public class MainFrame extends JFrame {
 
     public MainFrame() {
-        super("Кака ви е много яка");
+        super("Doily Maker");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         addPanels();
         this.pack();
@@ -34,8 +34,8 @@ public class MainFrame extends JFrame {
 
         playGround.add(drawing, BorderLayout.CENTER);
         playGround.add(control, BorderLayout.SOUTH);
-        tabs.addTab("Рисунка", playGround);
-        tabs.addTab("Последни произведения", gallery);
+        tabs.addTab("Drawing", playGround);
+        tabs.addTab("Recent works", gallery);
         main.add(tabs);
         setContentPane(main);
     }

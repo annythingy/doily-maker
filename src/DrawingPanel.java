@@ -7,6 +7,8 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.Stack;
 
 /**
@@ -79,13 +81,16 @@ public class DrawingPanel extends JPanel implements MouseListener, MouseMotionLi
         Image thumbnail = img.getScaledInstance(200, 200, BufferedImage.SCALE_SMOOTH);
         gallery.addDoily(new Doily(thumbnail, img, gallery));
         try {
-            if (ImageIO.write(img, "png", new File("./Галерия/" + (int) (Math.random() * 9999) + ".png")))
-                    JOptionPane.showMessageDialog(this, "Картинката е запазена успешно ^_^", "Hooray!", JOptionPane.INFORMATION_MESSAGE);
-
+            File dir = new File("Gallery");
+            if(!dir.exists()) dir.mkdir();
+            if (dir.exists()&&ImageIO.write(img, "png", new File("Gallery/" + System.currentTimeMillis() + ".png")))
+                JOptionPane.showMessageDialog(this, "Your doily was successfully saved ^_^", "Hooray!", JOptionPane.INFORMATION_MESSAGE);
+            else
+                JOptionPane.showMessageDialog(this, "Something went wrong :(", "Oops!", JOptionPane.INFORMATION_MESSAGE);
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(this, "Нещо се оплеска :(", "Опалянка!", JOptionPane.INFORMATION_MESSAGE);
             e.printStackTrace();
         }
+
     }
 
     @Override

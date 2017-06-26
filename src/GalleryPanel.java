@@ -24,8 +24,8 @@ public class GalleryPanel extends JPanel {
     public void addPanels() {
         pictures = new JPanel(new GridLayout(3,4));
         buttonPanel = new JPanel(); //only visible when a doily has been selected
-        JButton view = new JButton("Преглед");
-        JButton delete = new JButton("Изчисти текущата галерия");
+        JButton view = new JButton("View");
+        JButton delete = new JButton("Wipe recent doilies");
 
         view.addActionListener(e -> {
             for (Doily sd : doilies) {
@@ -36,7 +36,7 @@ public class GalleryPanel extends JPanel {
         });
         delete.addActionListener(e -> {
             //give the user the option to reconsider
-            int reply = JOptionPane.showConfirmDialog(null, "Сигурни ли сте, че искате да изчистите текущата галерия?", ":'(", JOptionPane.YES_NO_OPTION);
+            int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to empty the recent gallery?", ":'(", JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
                 for (Component sd : pictures.getComponents()) {
                     pictures.remove(sd);

@@ -29,9 +29,9 @@ public class ControlPanel extends JPanel {
     public void addButtons() {
         JPanel buttons = new JPanel();
         buttons.setLayout(new BoxLayout(buttons, BoxLayout.PAGE_AXIS));
-        JButton undo = new JButton("Отмени");
-        JButton clear = new JButton("Изчисти");
-        JButton save = new JButton("Запази");
+        JButton undo = new JButton("Undo");
+        JButton clear = new JButton("Clear");
+        JButton save = new JButton("Save");
         //make sure all the buttons are the same size
         undo.setMaximumSize(new Dimension(100, 30));
         clear.setMaximumSize(new Dimension(100, 30));
@@ -44,7 +44,7 @@ public class ControlPanel extends JPanel {
 
         clear.addActionListener(e -> {
             //make sure the user doesn't wipe the drawing by accident
-            int reply = JOptionPane.showConfirmDialog(null, "Сигурни ли сте, че искате да започнете наново?", ":'(", JOptionPane.YES_NO_OPTION);
+            int reply = JOptionPane.showConfirmDialog(null, "Are you sure?", ":'(", JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
                 //reset the drawing, as well as the settings (except reflection because I like it toggled)
                 colourPick.setBackground(null);
@@ -74,7 +74,7 @@ public class ControlPanel extends JPanel {
     public void addSettings() {
         JPanel settings = new JPanel(new GridLayout(2,1));
         JPanel values = new JPanel();                   //upper half
-        colourPick = new JButton("Палитра"); //lower half
+        colourPick = new JButton("Colour Chooser"); //lower half
         penSize = new JSlider(0, 10, 1);
         SpinnerModel spin = new SpinnerNumberModel(4, 1, 100, 1);
         JSpinner sectors = new JSpinner(spin);
@@ -96,7 +96,7 @@ public class ControlPanel extends JPanel {
         });
 
         colourPick.addActionListener(e -> {
-            Color c = JColorChooser.showDialog(null, "Изберете цвят", null);
+            Color c = JColorChooser.showDialog(null, "Pick a colour", null);
             drawing.setCurrColour(c);
             colourPick.setBackground(c);
             //make the name of the button visible regardless of the colour
@@ -106,9 +106,9 @@ public class ControlPanel extends JPanel {
             else colourPick.setForeground(Color.white);
         });
 
-        values.add(new JLabel("Дебелина на четката:"));
+        values.add(new JLabel("Brush width:"));
         values.add(penSize);
-        values.add(new JLabel("Сектори:"));
+        values.add(new JLabel("Sectors:"));
         values.add(sectors);
         settings.add(values);
         settings.add(colourPick);
@@ -124,9 +124,9 @@ public class ControlPanel extends JPanel {
         JPanel toggles = new JPanel();
         toggles.setLayout(new BoxLayout(toggles, BoxLayout.PAGE_AXIS));
 
-        JCheckBox reflect = new JCheckBox("Огледално рисуване");
-        JCheckBox back = new JCheckBox("Черен фон");
-        JCheckBox sectorLines = new JCheckBox("Видими сектори");
+        JCheckBox reflect = new JCheckBox("Reflection");
+        JCheckBox back = new JCheckBox("Black background");
+        JCheckBox sectorLines = new JCheckBox("Visible sector lines");
 
         //by default only reflection should be off, but just in case the booleans get changed in the other class
         reflect.setSelected(drawing.isReflection());

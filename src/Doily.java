@@ -36,7 +36,7 @@ public class Doily extends JPanel {
     public void viewDoily() {
         JDialog dialog = new JDialog();
         dialog.add(new JLabel(new ImageIcon(img)));
-        dialog.setTitle("Погледни това съвършенство!");
+        dialog.setTitle("Look at that masterpiece!");
         dialog.pack();
         dialog.setVisible(true);
         dialog.setLocation(450, 45);
