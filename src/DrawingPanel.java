@@ -18,7 +18,7 @@ import java.util.Stack;
  */
 public class DrawingPanel extends JPanel implements MouseListener, MouseMotionListener {
 
-    private int n = 5;                         //number of sectors, there has to be some initial number
+    private int n = 8;                         //number of sectors, there has to be some initial number
     private int penSize;                       //last chosen width of the brush
     private Line stroke;
     private Color currColour;                  //last chosen colour
